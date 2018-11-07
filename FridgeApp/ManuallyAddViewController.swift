@@ -44,6 +44,7 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 	}
 	
 	@IBAction func cancel() {
+		print ("cancel")
 		delegate?.ManuallyAddViewControllerDidCancel(controller: self)
 	}
 	
@@ -54,8 +55,14 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 		fridgeItem.expDate = Int(expDateField.text!)
 		if fridgeItem.name.count > 0 {
 			saveFridgeItem(fridgeItem: fridgeItem)
+			//_ = navigationController?.popViewController(animated: true)
 			delegate?.ManuallyAddViewController(controller: self, didFinishAddingFridgeItem: fridgeItem)
 		}
+		//navigationController?.popViewController(animated: true)
+		//_ = navigationController?.popViewController(animated: true)
+//		let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyFridgeViewController") as? MyFridgeViewController
+//		self.navigationController?.pushViewController(vc!, animated: true)
+		
 	}
 	
 	func saveFridgeItem(fridgeItem: FridgeItem) {
@@ -75,6 +82,14 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 			print("SAVED")
 		} catch {
 			print("Failed saving")
+		}
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "myFridge" {
+			let navigationController = segue.destination as! UINavigationController
+			let controller = navigationController.topViewController as! MyFridgeViewController
+			//controller.delegate = self
 		}
 	}
 	/*

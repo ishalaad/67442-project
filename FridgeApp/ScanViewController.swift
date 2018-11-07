@@ -22,6 +22,11 @@ class ScanViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+	
+	func ManuallyAddViewControllerDidCancel(controller: ManuallyAddViewController) {
+		print ("cancel in scan")
+		dismiss(animated: true, completion: nil)
+	}
   
 //  func saveFridgeItem(fridgeItem: fridgeItem) {
 //    
