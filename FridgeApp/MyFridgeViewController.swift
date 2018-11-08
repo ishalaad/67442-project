@@ -23,21 +23,21 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		      let appDelegate1 = UIApplication.shared.delegate as! AppDelegate
-//		      let context1 = appDelegate1.persistentContainer.viewContext
-//		      let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeListItem")
-//		      request1.returnsObjectsAsFaults = false
-//		      do {
-//		        let result = try context1.fetch(request1)
-//		        for data in result as! [NSManagedObject] {
-//		          context1.delete(data)
-//		          try context1.save()
-//		        }
-//		      } catch {
-//		        print("Failed")
-//		      }
-		//      grocItems.remove(at: indexPath.row)
-		//      tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
+//          let appDelegate1 = UIApplication.shared.delegate as! AppDelegate
+//          let context1 = appDelegate1.persistentContainer.viewContext
+//          let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeListItem")
+//          request1.returnsObjectsAsFaults = false
+//          do {
+//            let result = try context1.fetch(request1)
+//            for data in result as! [NSManagedObject] {
+//              context1.delete(data)
+//              try context1.save()
+//            }
+//          } catch {
+//            print("Failed")
+//          }
+//          fridgeItems.remove(at: indexPath.row)
+//          tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		tableView.dataSource = self
 		tableView.delegate = self
 		
@@ -144,7 +144,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
 			let appDelegate = UIApplication.shared.delegate as! AppDelegate
 			let context = appDelegate.persistentContainer.viewContext
-			let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeItem")
+			let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeListItem")
 			request.returnsObjectsAsFaults = false
 			do {
 				let result = try context.fetch(request)

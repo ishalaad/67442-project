@@ -14,6 +14,7 @@
 		910C32936B8F8FAD29ABE93C /* Pods_FridgeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C532F5FD7F5FEF2202E00415 /* Pods_FridgeApp.framework */; };
 		A9545926219384CB00774DCB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A9545925219384CB00774DCB /* Podfile */; };
 		A954592821938E4100774DCB /* foodExpiration.txt in Resources */ = {isa = PBXBuildFile; fileRef = A954592721938E4100774DCB /* foodExpiration.txt */; };
+		A954592A2193FE6F00774DCB /* ConfirmScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */; };
 		A9FBF00C218A6CF4004D6DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */; };
 		A9FBF00E218A6CF4004D6DF9 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */; };
 		A9FBF010218A6CF4004D6DF9 /* MyFridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00F218A6CF4004D6DF9 /* MyFridgeViewController.swift */; };
@@ -57,6 +58,7 @@
 		785178C5225CD8EE16BD8C33 /* Pods-FridgeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FridgeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp.release.xcconfig"; sourceTree = "<group>"; };
 		A9545925219384CB00774DCB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		A954592721938E4100774DCB /* foodExpiration.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodExpiration.txt; sourceTree = "<group>"; };
+		A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmScanViewController.swift; sourceTree = "<group>"; };
 		A9FBF008218A6CF4004D6DF9 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */,
 				A9FBF00F218A6CF4004D6DF9 /* MyFridgeViewController.swift */,
 				A9FBF011218A6CF4004D6DF9 /* Main.storyboard */,
+				A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */,
 				56713840218FC5920035AF6C /* FridgeItem.swift */,
 				56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */,
 				A9FBF091218AAC66004D6DF9 /* GroceryTableViewCell.swift */,
@@ -385,6 +388,7 @@
 				A9FBF00C218A6CF4004D6DF9 /* AppDelegate.swift in Sources */,
 				56713841218FC5920035AF6C /* FridgeItem.swift in Sources */,
 				56D439E4218FC19100074B5C /* ManuallyAddViewController.swift in Sources */,
+				A954592A2193FE6F00774DCB /* ConfirmScanViewController.swift in Sources */,
 				A9FBF08C218A9F7B004D6DF9 /* GrocItem.swift in Sources */,
 				A9FBF00E218A6CF4004D6DF9 /* ScanViewController.swift in Sources */,
 			);

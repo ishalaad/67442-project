@@ -13,6 +13,7 @@ import SwiftyJSON
 class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   let imagePicker = UIImagePickerController()
   let session = URLSession.shared
+  var itemArray = [String.SubSequence]()
   
 //  @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -44,6 +45,17 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+  {
+    if segue.destination is ConfirmScanViewController
+    {
+      let vc = segue.destination as? ConfirmScanViewController
+      vc?.name = String(self.itemArray[0])
+      vc?.expDate = String(self.itemArray[1])
+      labelResults.text = ""
+    }
   }
 }
 
@@ -115,11 +127,15 @@ extension ScanViewController {
       contents.enumerateLines({ (line, stop) in
         for word in results{
           if line.contains(word.trimmingCharacters(in: .whitespaces).capitalized), stopLoop == false{
-            let itemArray = line.split(separator: ",")
-            let finalResults = "\(itemArray[0]) will expire in\(itemArray[1])"
+            self.itemArray = line.split(separator: ",")
+            let finalResults = "\(self.itemArray[0]) will expire in \(self.itemArray[1])"
             print(finalResults)
             self.labelResults.text = finalResults
             stopLoop = true
+            let vc = ConfirmScanViewController()
+            vc.name = String(self.itemArray[0])
+            vc.expDate = String(self.itemArray[1])
+            self.performSegue(withIdentifier: "confirmScan", sender: nil)
           }
         }
       })
