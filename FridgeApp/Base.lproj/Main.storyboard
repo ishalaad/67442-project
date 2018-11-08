@@ -67,6 +67,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submit" destination="L6B-QU-iSf" eventType="touchUpInside" id="g9v-mh-k4t"/>
+                                    <segue destination="49e-Tb-3d3" kind="showDetail" id="gHl-K4-dTM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-bb-EQi">
@@ -89,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAL-j0-tG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="-1379.4602698650676"/>
+            <point key="canvasLocation" x="1071" y="-1700"/>
         </scene>
         <!--Scan View Controller-->
         <scene sceneID="hNz-n2-bh7">
@@ -145,7 +146,7 @@
                                 <rect key="frame" x="354" y="606" width="15" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="L6B-QU-iSf" kind="presentation" identifier="confirmScan" id="Xoe-wL-3bw"/>
+                                    <segue destination="L6B-QU-iSf" kind="presentation" identifier="confirmScan" modalTransitionStyle="coverVertical" id="Xoe-wL-3bw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -374,11 +375,17 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="J3a-uU-ToG"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="rE0-eM-Ojt" kind="relationship" relationship="viewControllers" id="uDo-AM-dVl"/>
                         <segue destination="Kqc-FD-p0m" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>

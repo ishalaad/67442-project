@@ -37,11 +37,13 @@ class ConfirmScanViewController: UIViewController {
   }
   
   @IBAction func submit() {
+    
     let fridgeItem = FridgeItem()
     fridgeItem.name = (nameLabel?.text!)!
     fridgeItem.quantity = Int(quantityInputField.text!)
     fridgeItem.expDate = Int(expDateLabel!.text!)
     if fridgeItem.name.count > 0 {
+      
       saveFridgeItem(fridgeItem: fridgeItem)
     }
     //navigationController?.popViewController(animated: true)
@@ -65,6 +67,7 @@ class ConfirmScanViewController: UIViewController {
     // Safely unwrap the picture
     do {
       try context.save()
+      
       print("SAVED")
     } catch {
       print("Failed saving")
