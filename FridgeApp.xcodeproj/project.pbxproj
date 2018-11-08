@@ -11,6 +11,9 @@
 		56713844218FC99F0035AF6C /* MyFridgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56713842218FC99F0035AF6C /* MyFridgeTableViewCell.swift */; };
 		56713845218FC99F0035AF6C /* MyFridgeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56713843218FC99F0035AF6C /* MyFridgeTableViewCell.xib */; };
 		56D439E4218FC19100074B5C /* ManuallyAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */; };
+		910C32936B8F8FAD29ABE93C /* Pods_FridgeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C532F5FD7F5FEF2202E00415 /* Pods_FridgeApp.framework */; };
+		A9545926219384CB00774DCB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A9545925219384CB00774DCB /* Podfile */; };
+		A954592821938E4100774DCB /* foodExpiration.txt in Resources */ = {isa = PBXBuildFile; fileRef = A954592721938E4100774DCB /* foodExpiration.txt */; };
 		A9FBF00C218A6CF4004D6DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */; };
 		A9FBF00E218A6CF4004D6DF9 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */; };
 		A9FBF010218A6CF4004D6DF9 /* MyFridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FBF00F218A6CF4004D6DF9 /* MyFridgeViewController.swift */; };
@@ -46,10 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CD3003A40DB53D20A97BC3C /* Pods-FridgeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FridgeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		56713840218FC5920035AF6C /* FridgeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItem.swift; sourceTree = "<group>"; };
 		56713842218FC99F0035AF6C /* MyFridgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFridgeTableViewCell.swift; sourceTree = "<group>"; };
 		56713843218FC99F0035AF6C /* MyFridgeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFridgeTableViewCell.xib; sourceTree = "<group>"; };
 		56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuallyAddViewController.swift; sourceTree = "<group>"; };
+		785178C5225CD8EE16BD8C33 /* Pods-FridgeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FridgeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp.release.xcconfig"; sourceTree = "<group>"; };
+		A9545925219384CB00774DCB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A954592721938E4100774DCB /* foodExpiration.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodExpiration.txt; sourceTree = "<group>"; };
 		A9FBF008218A6CF4004D6DF9 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +78,7 @@
 		A9FBF08F218AA9C6004D6DF9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A9FBF091218AAC66004D6DF9 /* GroceryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryTableViewCell.swift; sourceTree = "<group>"; };
 		A9FBF092218AAC66004D6DF9 /* GroceryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroceryTableViewCell.xib; sourceTree = "<group>"; };
+		C532F5FD7F5FEF2202E00415 /* Pods_FridgeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FridgeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910C32936B8F8FAD29ABE93C /* Pods_FridgeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,13 +107,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67B124F235F032CBE9B4787B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CD3003A40DB53D20A97BC3C /* Pods-FridgeApp.debug.xcconfig */,
+				785178C5225CD8EE16BD8C33 /* Pods-FridgeApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A9FBEFFF218A6CF4004D6DF9 = {
 			isa = PBXGroup;
 			children = (
+				A9545925219384CB00774DCB /* Podfile */,
 				A9FBF00A218A6CF4004D6DF9 /* FridgeApp */,
 				A9FBF021218A6CF6004D6DF9 /* FridgeAppTests */,
 				A9FBF02C218A6CF6004D6DF9 /* FridgeAppUITests */,
 				A9FBF009218A6CF4004D6DF9 /* Products */,
+				67B124F235F032CBE9B4787B /* Pods */,
+				DD8F462972DE3616F150A9A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +142,7 @@
 		A9FBF00A218A6CF4004D6DF9 /* FridgeApp */ = {
 			isa = PBXGroup;
 			children = (
+				A954592721938E4100774DCB /* foodExpiration.txt */,
 				A9FBF08F218AA9C6004D6DF9 /* DataManager.swift */,
 				A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */,
 				A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */,
@@ -161,6 +183,14 @@
 			path = FridgeAppUITests;
 			sourceTree = "<group>";
 		};
+		DD8F462972DE3616F150A9A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C532F5FD7F5FEF2202E00415 /* Pods_FridgeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9FBF032218A6CF6004D6DF9 /* Build configuration list for PBXNativeTarget "FridgeApp" */;
 			buildPhases = (
+				0D4217F14A76D1DE73460013 /* [CP] Check Pods Manifest.lock */,
 				A9FBF004218A6CF4004D6DF9 /* Sources */,
 				A9FBF005218A6CF4004D6DF9 /* Frameworks */,
 				A9FBF006218A6CF4004D6DF9 /* Resources */,
+				A69B04166C2D6ED7F6973D19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,6 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9545926219384CB00774DCB /* Podfile in Resources */,
+				A954592821938E4100774DCB /* foodExpiration.txt in Resources */,
 				A9FBF018218A6CF6004D6DF9 /* LaunchScreen.storyboard in Resources */,
 				A9FBF015218A6CF6004D6DF9 /* Assets.xcassets in Resources */,
 				56713845218FC99F0035AF6C /* MyFridgeTableViewCell.xib in Resources */,
@@ -288,6 +322,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D4217F14A76D1DE73460013 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FridgeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A69B04166C2D6ED7F6973D19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9FBF004218A6CF4004D6DF9 /* Sources */ = {
@@ -476,6 +557,7 @@
 		};
 		A9FBF033218A6CF6004D6DF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CD3003A40DB53D20A97BC3C /* Pods-FridgeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -493,6 +575,7 @@
 		};
 		A9FBF034218A6CF6004D6DF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 785178C5225CD8EE16BD8C33 /* Pods-FridgeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
