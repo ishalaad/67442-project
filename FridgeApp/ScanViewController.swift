@@ -11,13 +11,17 @@ import CoreData
 import SwiftyJSON
 
 class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
   let imagePicker = UIImagePickerController()
   let session = URLSession.shared
   var itemArray = [String.SubSequence]()
+  var fridgeItems = [FridgeItem]()
   
 //  @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var spinner: UIActivityIndicatorView!
   @IBOutlet weak var labelResults: UITextView!
+  
+  weak var delegate: ManuallyAddViewControllerDelegate?
   
   var googleAPIKey = "AIzaSyAWNssKrhgP9TgMwRUPvnK3g-vL8dKZBpU"
   var googleURL: URL {
@@ -30,6 +34,16 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     present(imagePicker, animated: true, completion: nil)
   }
+  
+//  @IBAction func takePhoto(){
+//    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+//      let imagePicker = UIImagePickerController()
+//      imagePicker.delegate = self
+//      imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+//      imagePicker.allowsEditing = false
+//      self.present(imagePicker, animated: true, completion: nil)
+//    }
+//  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,8 +63,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
-    if segue.destination is ConfirmScanViewController
-    {
+    if segue.destination is ConfirmScanViewController {
       let vc = segue.destination as? ConfirmScanViewController
       vc?.name = String(self.itemArray[0])
       vc?.expDate = String(self.itemArray[1])

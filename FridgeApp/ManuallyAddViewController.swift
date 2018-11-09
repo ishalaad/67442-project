@@ -43,10 +43,16 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 		// Dispose of any resources that can be recreated.
 	}
 	
-	@IBAction func cancel() {
-		print ("cancel")
-		delegate?.ManuallyAddViewControllerDidCancel(controller: self)
-	}
+  @IBAction func cancel() {
+    print ("cancel")
+    //    delegate?.ManuallyAddViewControllerDidCancel(controller: self)
+    if let nav = self.navigationController {
+      nav.popViewController(animated: true)
+    } else {
+      self.dismiss(animated: true, completion: nil)
+    }
+    
+  }
 	
 	@IBAction func submit() {
 		let fridgeItem = FridgeItem()
