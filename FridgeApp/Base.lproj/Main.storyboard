@@ -136,9 +136,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wze-Mr-1Ju">
-                                <rect key="frame" x="100" y="353" width="174" height="30"/>
+                                <rect key="frame" x="37" y="353" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Choose Image to Analyze"/>
+                                <state key="normal" title="Choose Image From Camera Roll to Analyze"/>
                                 <connections>
                                     <action selector="loadImageButtonTapped:" destination="9pv-A4-QxB" eventType="touchUpInside" id="WaB-n4-nqW"/>
                                 </connections>
