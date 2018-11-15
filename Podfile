@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '11.4'
 use_frameworks!
 
 target 'FridgeApp' do

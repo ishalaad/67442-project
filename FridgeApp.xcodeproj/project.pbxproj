@@ -56,7 +56,7 @@
 		56713843218FC99F0035AF6C /* MyFridgeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFridgeTableViewCell.xib; sourceTree = "<group>"; };
 		56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuallyAddViewController.swift; sourceTree = "<group>"; };
 		785178C5225CD8EE16BD8C33 /* Pods-FridgeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FridgeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FridgeApp/Pods-FridgeApp.release.xcconfig"; sourceTree = "<group>"; };
-		A9545925219384CB00774DCB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A9545925219384CB00774DCB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A954592721938E4100774DCB /* foodExpiration.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodExpiration.txt; sourceTree = "<group>"; };
 		A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmScanViewController.swift; sourceTree = "<group>"; };
 		A9FBF008218A6CF4004D6DF9 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -565,13 +565,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V92VW3DH72;
 				INFOPLIST_FILE = FridgeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = IS67442.FridgeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = IS67442.FridgeApplol;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,13 +585,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V92VW3DH72;
 				INFOPLIST_FILE = FridgeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = IS67442.FridgeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = IS67442.FridgeApplol;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
