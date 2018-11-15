@@ -129,11 +129,12 @@ extension ScanViewController {
   
   func identifyItem (APIresults: String) {
     //search words in txt file
-    let userPath = "/Users/sbauerthp/Documents/IOSApp/Fridge App/67442-project/FridgeApp" //ADD PATH TO SWIFT FOLDER HERE
-    let file = "\(userPath)/foodExpiration.txt"
+//    let userPath = "/Users/sbauerthp/Documents/IOSApp/Fridge App/67442-project/FridgeApp" //ADD PATH TO SWIFT FOLDER HERE
+    let userPath = Bundle.main.path(forResource: "foodExpiration", ofType: "txt")
+//    let file = "\(userPath)/foodExpiration.txt"
     do {
       // Get the contents of the file
-      let contents = try NSString(contentsOfFile: file, encoding: String.Encoding.utf8.rawValue)
+      let contents = try NSString(contentsOfFile: userPath!, encoding: String.Encoding.utf8.rawValue)
       //split up google vision label results
       let results = APIresults.split(separator: ",")
       var stopLoop = false
