@@ -165,14 +165,14 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		}
 		
-		let purchase = UITableViewRowAction(style: .normal, title: "Purchase") { (action, indexPath) in
-			// share item at indexPath
-			print("PURCHASED \(self.fridgeItems[indexPath.row].name)")
-		}
+//    let purchase = UITableViewRowAction(style: .normal, title: "Purchase") { (action, indexPath) in
+//      // share item at indexPath
+//      print("PURCHASED \(self.fridgeItems[indexPath.row].name)")
+//    }
+//    
+//    purchase.backgroundColor = UIColor.blue
 		
-		purchase.backgroundColor = UIColor.blue
-		
-		return [delete, purchase]
+		return [delete]
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
