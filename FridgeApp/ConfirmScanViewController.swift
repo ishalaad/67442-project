@@ -14,8 +14,8 @@ class ConfirmScanViewController: UIViewController {
   var name:String?
   var expDate:String?
   
-  @IBOutlet weak var nameLabel: UILabel?
-  @IBOutlet weak var expDateLabel: UILabel?
+  @IBOutlet weak var nameEditField: UITextField?
+  @IBOutlet weak var expDateEditField: UITextField?
   @IBOutlet weak var quantityInputField: UITextField!
   @IBOutlet weak var submitButton: UIButton!
 
@@ -24,8 +24,8 @@ class ConfirmScanViewController: UIViewController {
 
         // Do any additional setup after loading the view.
       
-      nameLabel?.text = name ?? "Name not found"
-      expDateLabel?.text = expDate?.replacingOccurrences(of: " ", with: "") ?? "Date not found"
+      nameEditField?.text = name ?? "Name not found"
+      expDateEditField?.text = expDate?.replacingOccurrences(of: " ", with: "") ?? "Date not found"
     }
   
   @IBAction func cancelScan() {
@@ -39,9 +39,9 @@ class ConfirmScanViewController: UIViewController {
   @IBAction func submit() {
     
     let fridgeItem = FridgeItem()
-    fridgeItem.name = (nameLabel?.text!)!
+    fridgeItem.name = (nameEditField?.text!)!
     fridgeItem.quantity = Int(quantityInputField.text!)
-    fridgeItem.expDate = Int(expDateLabel!.text!)
+    fridgeItem.expDate = Int(expDateEditField!.text!)
     if fridgeItem.name.count > 0 {
       
       saveFridgeItem(fridgeItem: fridgeItem)
