@@ -15,8 +15,9 @@ import CoreData
 //}
 
 class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, ManuallyAddViewControllerDelegate {
-	
-	
+  
+  var viewModel = MyFridgeViewModel()
+  
 	var fridgeItems = [FridgeItem]()
 	var dataManager = DataManager()
 	@IBOutlet weak var tableView: UITableView!
@@ -61,6 +62,13 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		}
 		
 	}
+  
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      if let selectedRow = tableView.indexPathForSelectedRow {
+        tableView.deselectRow(at: selectedRow, animated: true)
+      }
+    }
 	
 	func ManuallyAddViewControllerDidCancel(controller: ManuallyAddViewController) {
 		dismiss(animated: true, completion: nil)
@@ -102,7 +110,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "fridgeCell", for: indexPath as IndexPath) as! MyFridgeTableViewCell
-		
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 		let fridgeItem = fridgeItems[indexPath.row]
 		cell.name?.text = fridgeItem.name
 //		cell.quantity?.text = "\(fridgeItem.quantity!)"
@@ -176,7 +184,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		//    self.performSegue(withIdentifier: "showDetail", sender: indexPath)
+        self.performSegue(withIdentifier: "showDetail", sender: indexPath)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -185,6 +193,10 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			let controller = navigationController.topViewController as! ManuallyAddViewController
 			controller.delegate = self
 		}
+        if let detailVC = segue.destination as? ItemDetailViewController,
+          let indexPath = sender as? IndexPath {
+          detailVC.viewModel = viewModel.detailViewModelForRowAtIndexPath(indexPath, fridgeItems)
+        }
 	}
 	
 //	func ManuallyAddAddViewControllerDidCancel(controller: ManuallyAddViewController) {
