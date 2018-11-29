@@ -136,7 +136,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wze-Mr-1Ju">
-                                <rect key="frame" x="37" y="353" width="300" height="30"/>
+                                <rect key="frame" x="37" y="190" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose Image From Camera Roll to Analyze"/>
                                 <connections>
@@ -144,7 +144,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bdk-Rq-a5X" userLabel="Spinner">
-                                <rect key="frame" x="177" y="282" width="20" height="20"/>
+                                <rect key="frame" x="177" y="162" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agS-GX-4Ew" userLabel="Segue Button">
@@ -152,6 +152,64 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="L6B-QU-iSf" kind="presentation" identifier="confirmScan" modalTransitionStyle="coverVertical" id="Xoe-wL-3bw"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Gi-yP-A8Y">
+                                <rect key="frame" x="31" y="295" width="300" height="235"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XPt-eD-mmJ">
+                                    <size key="itemSize" width="84" height="91"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="NBS-iy-zsc" customClass="CollectionViewCell" customModule="FridgeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="91"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="84" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PIQ-MU-Gbc">
+                                                    <rect key="frame" x="10" y="5" width="64" height="64"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJZ-ij-0iJ">
+                                                    <rect key="frame" x="12" y="71" width="90" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="myLabel" destination="hJZ-ij-0iJ" id="CBY-mb-Agg"/>
+                                            <outlet property="pic" destination="PIQ-MU-Gbc" id="SOI-2F-4NA"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="35J-uD-kmR"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="DzR-PK-wC6"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Iems to Quick Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzG-9E-nOV">
+                                <rect key="frame" x="91" y="266" width="193" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWp-gf-3uy">
+                                <rect key="frame" x="115" y="538" width="133" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add common items"/>
+                                <connections>
+                                    <action selector="loadAddedCommonItemsList" destination="9pv-A4-QxB" eventType="touchUpInside" id="0U9-pO-qLZ"/>
+                                    <segue destination="49e-Tb-3d3" kind="showDetail" id="YZ9-QX-wBB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -625,11 +683,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fridge" width="32" height="32"/>
-        <image name="list" width="32" height="32"/>
-        <image name="plus" width="32" height="32"/>
+        <image name="fridge" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="list" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="plus" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g6h-Kb-HoF"/>
+        <segue reference="YZ9-QX-wBB"/>
     </inferredMetricsTieBreakers>
 </document>
