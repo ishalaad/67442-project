@@ -251,6 +251,12 @@ extension ScanViewController {
     
   }
   
+  func createAlert(){
+    let alert = UIAlertController(title: "Food in picture not found!", message: "Try manually adding your item", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    self.present(alert, animated: true)
+  }
+  
   func identifyItem (APIresults: String) {
     //search words in txt file
 //    let userPath = "/Users/sbauerthp/Documents/IOSApp/Fridge App/67442-project/FridgeApp" //ADD PATH TO SWIFT FOLDER HERE
@@ -277,6 +283,7 @@ extension ScanViewController {
           }
         }
       })
+      createAlert()
     }
     catch let error as NSError {
       print("Ooops! Something went wrong: \(error)")
