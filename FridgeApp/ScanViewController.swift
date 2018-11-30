@@ -10,7 +10,118 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+	
+	//@IBOutlet weak var tableview: UITableView!
+	
+	//addingCommonItems
+	
+	//@IBOutlet weak var tableView: UITableView!
+	
+	let commonItemsStrings:[String] = ["Apples", "Milk", "Bananas", "Yogurt", "Strawberries", "Grapes", "Lettuce", "Oranges", "Eggs"]
+	var selectedItems:[String] = []
+	
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return commonItemsStrings.count
+	}
+
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+		
+		cell.myLabel.text = commonItemsStrings[indexPath.item]
+		let itemImage = UIImage(named: commonItemsStrings[indexPath.item] + ".jpg")
+		//let itemImage    = UIImage(contentsOfFile: commonItemsStrings[indexPath.item] + ".jpg")
+		cell.pic.image = itemImage
+		
+		collectionView.allowsMultipleSelection = true
+		
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		print(commonItemsStrings[indexPath.item])
+
+		let cell = collectionView.cellForItem(at: indexPath)
+		if cell?.isSelected == true {
+			cell?.backgroundColor = UIColor.green
+		}
+	
+		selectedItems.append(commonItemsStrings[indexPath.item])
+		
+		//loadAddedCommonItemsList()
+		
+	}
+	
+//	@IBAction func load() {
+//		if let nav = self.navigationController {
+//			nav.popViewController(animated: true)
+//		} else {
+//			self.dismiss(animated: true, completion: nil)
+//		}
+//	}
+	
+	
+	@IBAction func loadAddedCommonItemsList() {
+		print (selectedItems)
+
+		var dictExpirationDates = ["Apples": 22, "Milk": 6, "Bananas": 7, "Yogurt": 4, "Strawberries": 3, "Grapes": 5, "Lettuce": 4, "Oranges": 9, "Eggs": 10]
+		
+		for item in selectedItems {
+			let fridgeItem = FridgeItem()
+			fridgeItem.name = item
+			fridgeItem.quantity = 1
+			fridgeItem.expDate = dictExpirationDates[item]
+			if fridgeItem.name.count > 0 {
+				saveFridgeItem(fridgeItem: fridgeItem)
+				//_ = navigationController?.popViewController(animated: true)
+//				delegate?.ManuallyAddViewController (controller: self, didFinishAddingFridgeItem: fridgeItem)
+			}
+		}
+	}
+	
+	func saveFridgeItem(fridgeItem: FridgeItem) {
+		// Connect to the context for the container stack
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		let context = appDelegate.persistentContainer.viewContext
+		// Specifically select the People entity to save this object to
+		let entity = NSEntityDescription.entity(forEntityName: "FridgeListItem", in: context)
+		let newItem = NSManagedObject(entity: entity!, insertInto: context)
+		// Set values one at a time and save
+		newItem.setValue(fridgeItem.name, forKey: "name")
+		newItem.setValue(fridgeItem.quantity, forKey: "quantity")
+		newItem.setValue(fridgeItem.expDate, forKey: "expDate")
+		// Safely unwrap the picture
+		do {
+			try context.save()
+			print("SAVED")
+		} catch {
+			print("Failed saving")
+		}
+	}
+	
+	//tableview for add common items
+	
+//	func numberOfSections(in tableView: UITableView) -> Int {
+//		return 1
+//	}
+//	
+//	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//		return selectedItems.count
+//	}
+//
+//	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//		let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as UITableViewCell
+//
+//		//cell.textLabel?.text = selectedItems[indexPath.row]
+//		cell.name?.text = selectedItems[indexPath.row]
+//
+//		return cell
+//	}
+	
+	
+	//scan in
   
   let imagePicker = UIImagePickerController()
   let session = URLSession.shared
@@ -47,6 +158,15 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   
   override func viewDidLoad() {
     super.viewDidLoad()
+//		var apple = FridgeItem()
+//		apple.name = "apple"
+//		apple.quantity = 0
+//		apple.expDate = 3
+//
+//		var milk = FridgeItem()
+//		apple.name = "milk"
+//		apple.quantity = 0
+//		apple.expDate = 3
     // Do any additional setup after loading the view, typically from a nib.
     //      let image = UIImage(named: "apple.jpg")
     //      let binaryImageData = base64EncodeImage(image!)
@@ -54,6 +174,10 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     imagePicker.delegate = self
     labelResults.isHidden = true
     spinner.hidesWhenStopped = true
+		
+		//added
+		//tableView.dataSource = self
+		//tableView.delegate = self
   }
   
   override func didReceiveMemoryWarning() {
