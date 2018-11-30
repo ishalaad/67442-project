@@ -60,7 +60,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		} catch {
 			print("Failed")
 		}
-		
+		createAlert()
 	}
   
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +69,12 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: selectedRow, animated: true)
       }
     }
+  
+  func createAlert(){
+    let alert = UIAlertController(title: "Expiration Notice!", message: "Your apples will expire in 2 days", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    self.present(alert, animated: true)
+  }
 	
 	func ManuallyAddViewControllerDidCancel(controller: ManuallyAddViewController) {
 		dismiss(animated: true, completion: nil)
