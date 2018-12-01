@@ -117,10 +117,12 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryListItem")
+    
     let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-      let context = appDelegate.persistentContainer.viewContext
-      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryListItem")
       request.returnsObjectsAsFaults = false
       do {
         let result = try context.fetch(request)
@@ -143,6 +145,24 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     let purchase = UITableViewRowAction(style: .normal, title: "Purchase") { (action, indexPath) in
       // share item at indexPath
       print("PURCHASED \(self.grocItems[indexPath.row].name)")
+      
+      request.returnsObjectsAsFaults = false
+      do {
+        let result = try context.fetch(request)
+        for data in result as! [NSManagedObject] {
+          // if the contact we are deleting is the same as this one in CoreData
+          if self.grocItems[indexPath.row].name == (data.value(forKey: "name") as! String) &&
+            self.grocItems[indexPath.row].quantity == (data.value(forKey: "quantity") as! Int){
+            print("----------------PURCHASED \(self.grocItems[indexPath.row].name)----------------")
+            context.delete(data)
+            try context.save()
+          }
+        }
+      } catch {
+        print("Failed")
+      }
+      self.grocItems.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
     }
     
     purchase.backgroundColor = UIColor.blue

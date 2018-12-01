@@ -13,7 +13,6 @@ class ItemDetailViewController: UIViewController {
   var viewModel: ItemDetailViewModel?
   
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var quantityLabel: UILabel!
   @IBOutlet weak var expDateLabel: UILabel!
 
     override func viewDidLoad() {
@@ -21,7 +20,6 @@ class ItemDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
       nameLabel.text = viewModel!.name()
-      quantityLabel.text = viewModel!.quantity()
       expDateLabel.text = viewModel!.expDate()
     }
     
