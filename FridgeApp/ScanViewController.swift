@@ -45,7 +45,8 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 		let cell = collectionView.cellForItem(at: indexPath)
 		if cell?.isSelected == true {
-			cell?.backgroundColor = UIColor.green
+			cell?.layer.borderColor = UIColor.green.cgColor
+			cell?.layer.borderWidth = 3
 		}
 	
 		selectedItems.append(commonItemsStrings[indexPath.item])
@@ -56,7 +57,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
 		let cell = collectionView.cellForItem(at: indexPath)!
 		if cell.isSelected == false {
-			cell.backgroundColor = UIColor.white
+			cell.layer.borderColor = UIColor.white.cgColor
 		}
 		
 		selectedItems.index(of: commonItemsStrings[indexPath.item]).map { selectedItems.remove(at: $0) }
