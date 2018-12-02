@@ -66,13 +66,12 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 	@IBAction func loadAddedCommonItemsList() {
 		print (selectedItems)
 
-		var dictExpirationDates = ["Apples": 22, "Milk": 6, "Bananas": 7, "Yogurt": 4, "Strawberries": 3, "Grapes": 5, "Lettuce": 4, "Oranges": 9, "Eggs": 10]
-		
+		var dictExpirationDates = ["Apples": [12, 22], "Milk": [1, 6], "Bananas": [6, 7], "Yogurt": [4, 4], "Strawberries": [20, 3], "Grapes": [1, 5], "Lettuce": [1, 4], "Oranges": [10, 9], "Eggs": [12, 10]]
 		for item in selectedItems {
 			let fridgeItem = FridgeItem()
 			fridgeItem.name = item
-			fridgeItem.quantity = 1
-			fridgeItem.expDate = dictExpirationDates[item]
+			fridgeItem.quantity = dictExpirationDates[item]?[0]
+			fridgeItem.expDate = dictExpirationDates[item]?[1]
 			if fridgeItem.name.count > 0 {
 				saveFridgeItem(fridgeItem: fridgeItem)
 				//_ = navigationController?.popViewController(animated: true)
