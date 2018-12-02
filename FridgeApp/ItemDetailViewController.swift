@@ -22,7 +22,6 @@ class ItemDetailViewController: UIViewController {
       nameLabel.text = viewModel!.name()
       expDateLabel.text = viewModel!.expDate()
     }
-    
 
   
 
