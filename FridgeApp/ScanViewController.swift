@@ -51,6 +51,16 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 		selectedItems.append(commonItemsStrings[indexPath.item])
 		
 		//loadAddedCommonItemsList()
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+		let cell = collectionView.cellForItem(at: indexPath)!
+		if cell.isSelected == false {
+			cell.backgroundColor = UIColor.white
+		}
+		
+		selectedItems.index(of: commonItemsStrings[indexPath.item]).map { selectedItems.remove(at: $0) }
+		//selectedItems.append(commonItemsStrings[indexPath.item])
 		
 	}
 	
