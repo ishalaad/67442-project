@@ -114,10 +114,21 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		let fridgeItem = fridgeItems[indexPath.row]
         if fridgeItem.name == "Apples" {
           cell.name?.textColor = UIColor.red
+        } else {
+          cell.name?.textColor = UIColor.black
         }
 		cell.name?.text = fridgeItem.name
-      
-//		cell.quantity?.text = "\(fridgeItem.quantity!)"
+        let imageView = UIImageView(image: UIImage(named: "emptyFridgeShelf2"))
+        var frame = imageView.frame
+        frame.size.height = cell.frame.height
+        frame.size.width = cell.frame.width
+        /* other frame changes ... */
+        imageView.frame = frame
+        cell.backgroundView = UIView()
+        cell.backgroundView!.addSubview(imageView)
+//        let chevron = UIImage(named: "chevron")
+//        cell.accessoryType = .disclosureIndicator
+//        cell.accessoryView = UIImageView(image: chevron!)
 		return cell
 	}
 	
