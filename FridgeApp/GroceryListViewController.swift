@@ -14,6 +14,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   var grocItems = [GrocItem]()
 	var dataManager = DataManager()
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var grocListTop: UIImageView!
 
     override func viewDidLoad() {
 //      super.viewDidLoad()
@@ -53,6 +54,15 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       } catch {
         print("Failed")
       }
+      grocListTop.image = UIImage(named: "notepadTop")
+      let imageView = UIImageView(image: UIImage(named: "notepadLines"))
+      var frame = imageView.frame
+      frame.size.height = tableView.frame.height
+      frame.size.width = tableView.frame.width
+      /* other frame changes ... */
+      imageView.frame = frame
+      tableView.backgroundView = UIView()
+      tableView.backgroundView!.addSubview(imageView)
       
     }
   
@@ -82,6 +92,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     let grocItem = grocItems[indexPath.row]
     cell.name?.text = grocItem.name
     cell.quantity?.text = "\(grocItem.quantity!)"
+    cell.backgroundColor = UIColor.clear
     return cell
   }
   

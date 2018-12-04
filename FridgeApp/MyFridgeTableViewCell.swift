@@ -11,6 +11,10 @@ import UIKit
 class MyFridgeTableViewCell: UITableViewCell {
 	
 	@IBOutlet weak var name: UILabel!
+    @IBOutlet weak var expDate: UILabel!
+    @IBOutlet weak var quantity: UILabel!
+    @IBOutlet weak var foodIcon: UIImageView!
+    @IBOutlet weak var daysLeft: UILabel!
 //	@IBOutlet weak var q: UILabel!
 
     override func awakeFromNib() {
