@@ -55,6 +55,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="daysLeft" destination="IEX-PH-ICa" id="IN1-Og-fEG"/>
                 <outlet property="expDate" destination="Vvg-55-fmn" id="aLQ-Al-R2Z"/>
                 <outlet property="foodIcon" destination="svU-Jd-plK" id="iKf-lm-eHZ"/>
                 <outlet property="name" destination="JZa-e5-Jbn" id="leF-46-D0R"/>

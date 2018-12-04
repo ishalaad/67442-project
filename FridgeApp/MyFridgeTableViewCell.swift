@@ -14,6 +14,7 @@ class MyFridgeTableViewCell: UITableViewCell {
     @IBOutlet weak var expDate: UILabel!
     @IBOutlet weak var quantity: UILabel!
     @IBOutlet weak var foodIcon: UIImageView!
+    @IBOutlet weak var daysLeft: UILabel!
 //	@IBOutlet weak var q: UILabel!
 
     override func awakeFromNib() {

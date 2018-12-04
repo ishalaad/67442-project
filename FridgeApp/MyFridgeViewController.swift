@@ -115,8 +115,14 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		let fridgeItem = fridgeItems[indexPath.row]
         if fridgeItem.name == "Apples" {
           cell.name?.textColor = UIColor.red
+          cell.expDate?.textColor = UIColor.red
+          cell.quantity?.textColor = UIColor.red
+          cell.daysLeft?.textColor = UIColor.red
         } else {
           cell.name?.textColor = UIColor.black
+          cell.expDate?.textColor = UIColor.black
+          cell.quantity?.textColor = UIColor.black
+          cell.daysLeft?.textColor = UIColor.black
         }
 		cell.name?.text = fridgeItem.name
         cell.expDate?.text = String(fridgeItem.expDate!)
