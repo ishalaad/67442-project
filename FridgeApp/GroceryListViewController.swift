@@ -54,16 +54,16 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       } catch {
         print("Failed")
       }
-      grocListTop.image = UIImage(named: "notepadTop")
-      let imageView = UIImageView(image: UIImage(named: "notepadLines"))
-      var frame = imageView.frame
-      frame.size.height = tableView.frame.height
-      frame.size.width = tableView.frame.width
-      /* other frame changes ... */
-      imageView.frame = frame
-      tableView.backgroundView = UIView()
-      tableView.backgroundView!.addSubview(imageView)
-      
+//      grocListTop.image = UIImage(named: "notepadTop")
+//      let imageView = UIImageView(image: UIImage(named: "notepadLines"))
+//      var frame = imageView.frame
+//      frame.size.height = tableView.frame.height
+//      frame.size.width = tableView.frame.width
+//      /* other frame changes ... */
+//      imageView.frame = frame
+//      tableView.backgroundView = UIView()
+//      tableView.backgroundView!.addSubview(imageView)
+			
     }
   
   func loadGroceryList(data: NSManagedObject){
