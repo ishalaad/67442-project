@@ -8,19 +8,14 @@
 
 import UIKit
 import CoreData
-//
-//protocal MyFridgeViewControllerDelegate: class {
-//
-//
-//}
+
 
 class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, ManuallyAddViewControllerDelegate {
-  
-  var viewModel = MyFridgeViewModel()
-  
+    
 	var fridgeItems = [FridgeItem]()
 	var dataManager = DataManager()
 	@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var fridgeTop: UIImageView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,7 +36,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 //          tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		tableView.dataSource = self
 		tableView.delegate = self
-		
+        fridgeTop.image = UIImage(named: "fridgeTop3")
 		// Do any additional setup after loading the view.
 		let cellNib = UINib(nibName: "MyFridgeTableViewCell", bundle: nil)
 		self.tableView.register(cellNib.self, forCellReuseIdentifier: "fridgeCell")
@@ -60,7 +55,14 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		} catch {
 			print("Failed")
 		}
-//    createAlert()
+      let imageView = UIImageView(image: UIImage(named: "shelves3"))
+      var frame = imageView.frame
+      frame.size.height = tableView.frame.height
+      frame.size.width = tableView.frame.width
+      /* other frame changes ... */
+      imageView.frame = frame
+      tableView.backgroundView = UIView()
+      tableView.backgroundView!.addSubview(imageView)
 	}
   
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +112,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "fridgeCell", for: indexPath as IndexPath) as! MyFridgeTableViewCell
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 		let fridgeItem = fridgeItems[indexPath.row]
         if fridgeItem.name == "Apples" {
           cell.name?.textColor = UIColor.red
@@ -118,17 +119,15 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
           cell.name?.textColor = UIColor.black
         }
 		cell.name?.text = fridgeItem.name
-        let imageView = UIImageView(image: UIImage(named: "emptyFridgeShelf2"))
-        var frame = imageView.frame
-        frame.size.height = cell.frame.height
-        frame.size.width = cell.frame.width
-        /* other frame changes ... */
-        imageView.frame = frame
-        cell.backgroundView = UIView()
-        cell.backgroundView!.addSubview(imageView)
-//        let chevron = UIImage(named: "chevron")
-//        cell.accessoryType = .disclosureIndicator
-//        cell.accessoryView = UIImageView(image: chevron!)
+        cell.expDate?.text = String(fridgeItem.expDate!)
+        cell.quantity?.text = String(fridgeItem.quantity!)
+        let foodIconArray = ["Apples", "Bananas", "Milk", "Oranges", "Grapes","Lettuce","Strawberries","Yogurt", "Eggs", "Kiwi", "Kiwifruit","Watermelon"]
+        if foodIconArray.contains(fridgeItem.name){
+          cell.foodIcon.image = UIImage(named: "\(fridgeItem.name)Icon")
+        } else {
+          cell.foodIcon.image = UIImage(named: "notFoundIcon")
+        }
+        cell.backgroundColor = UIColor.clear
 		return cell
 	}
 	
@@ -170,7 +169,9 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetail", sender: indexPath)
+      if let selectedRow = tableView.indexPathForSelectedRow {
+        tableView.deselectRow(at: selectedRow, animated: true)
+      }
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -179,10 +180,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			let controller = navigationController.topViewController as! ManuallyAddViewController
 			controller.delegate = self
 		}
-        if let detailVC = segue.destination as? ItemDetailViewController,
-          let indexPath = sender as? IndexPath {
-          detailVC.viewModel = viewModel.detailViewModelForRowAtIndexPath(indexPath, fridgeItems)
-        }
+
 	}
 	
 }
