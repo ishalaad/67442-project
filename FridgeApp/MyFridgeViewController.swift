@@ -15,7 +15,8 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	var fridgeItems = [FridgeItem]()
 	var dataManager = DataManager()
 	@IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var fridgeTop: UIImageView!
+	@IBOutlet weak var fridgeTop: UIImageView!
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

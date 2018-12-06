@@ -45,7 +45,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 		let cell = collectionView.cellForItem(at: indexPath)
 		if cell?.isSelected == true {
-			cell?.layer.borderColor = UIColor.green.cgColor
+			cell?.layer.borderColor = UIColor.black.cgColor
 			cell?.layer.borderWidth = 3
 		}
 	
