@@ -114,7 +114,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "fridgeCell", for: indexPath as IndexPath) as! MyFridgeTableViewCell
 		let fridgeItem = fridgeItems[indexPath.row]
-        if fridgeItem.name == "Apples" {
+        if (fridgeItem.expDate! < 4) {
           cell.name?.textColor = UIColor.red
           cell.expDate?.textColor = UIColor.red
           cell.quantity?.textColor = UIColor.red
