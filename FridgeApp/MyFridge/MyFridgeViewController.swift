@@ -41,6 +41,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		} catch {
 			print("Failed")
 		}
+      //display the shelves in the background of my fridge
       let imageView = UIImageView(image: UIImage(named: "shelves3"))
       var frame = imageView.frame
       frame.size.height = tableView.frame.height
@@ -64,7 +65,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func ManuallyAddViewController(controller: ManuallyAddViewController, didFinishAddingFridgeItem fridgeItem: FridgeItem) {
 		let newRowIndex = fridgeItems.count
-		
+		//add fridge item
 		fridgeItems.append(fridgeItem)
 		
 		let indexPath = NSIndexPath(row: newRowIndex, section: 0)
@@ -77,6 +78,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func loadMyFridgeList(data: NSManagedObject){
 		let newFridgeItem = FridgeItem()
+        //get inputed values from the text boxes for item information
 		newFridgeItem.name = data.value(forKey: "name") as! String
 		newFridgeItem.quantity = (data.value(forKey: "quantity") as! Int)
 		newFridgeItem.expDate = (data.value(forKey: "expDate") as! Int)
@@ -98,6 +100,8 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "fridgeCell", for: indexPath as IndexPath) as! MyFridgeTableViewCell
 		let fridgeItem = fridgeItems[indexPath.row]
+      
+        //to display the items that are going bad soon in red
         if (fridgeItem.expDate! < 4) {
           cell.name?.textColor = UIColor.red
           cell.expDate?.textColor = UIColor.red
@@ -116,6 +120,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
         if foodIconArray.contains(fridgeItem.name){
           cell.foodIcon.image = UIImage(named: "\(fridgeItem.name)Icon")
         }
+        //if added item has not icon, input a clear background
         cell.backgroundColor = UIColor.clear
 		return cell
 	}
@@ -150,6 +155,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			} catch {
 				print("Failed")
 			}
+            //if user swipes to delete item in fridge
 			self.fridgeItems.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		}
@@ -158,6 +164,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      //makes row unselectable/highlighted because nothing happens when you tap cell
       if let selectedRow = tableView.indexPathForSelectedRow {
         tableView.deselectRow(at: selectedRow, animated: true)
       }

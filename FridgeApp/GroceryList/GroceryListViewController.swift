@@ -11,10 +11,10 @@ import CoreData
 
 class GroceryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GroceryAddViewControllerDelegate  {
   
-  var grocItems = [GrocItem]()
+    var grocItems = [GrocItem]()
 	var dataManager = DataManager()
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var grocListTop: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var grocListTop: UIImageView!
 
     override func viewDidLoad() {
       tableView.dataSource = self
@@ -29,6 +29,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       let context = appDelegate.persistentContainer.viewContext
       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryListItem")
       request.returnsObjectsAsFaults = false
+      //get data from core data
       do {
         let result = try context.fetch(request)
         for data in result as! [NSManagedObject] {
@@ -103,7 +104,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       self.grocItems.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
     }
-    
+    //for when user marks grocery item as purchased
     let purchase = UITableViewRowAction(style: .normal, title: "Purchase") { (action, indexPath) in
       // share item at indexPath
       print("PURCHASED \(self.grocItems[indexPath.row].name)")
@@ -133,6 +134,10 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //makes row unselectable/highlighted because nothing happens when you tap cell
+    if let selectedRow = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: selectedRow, animated: true)
+    }
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

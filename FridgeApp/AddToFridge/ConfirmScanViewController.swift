@@ -22,10 +22,8 @@ class ConfirmScanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-      
-      nameEditField?.text = name ?? "Name not found"
-      expDateEditField?.text = expDate?.replacingOccurrences(of: " ", with: "") ?? "Date not found"
+        nameEditField?.text = name ?? "Name not found"
+        expDateEditField?.text = expDate?.replacingOccurrences(of: " ", with: "") ?? "Date not found"
     }
   
   @IBAction func cancelScan() {
@@ -43,7 +41,6 @@ class ConfirmScanViewController: UIViewController {
     fridgeItem.quantity = Int(quantityInputField.text!)
     fridgeItem.expDate = Int(expDateEditField!.text!)
     if fridgeItem.name.count > 0 {
-      
       saveFridgeItem(fridgeItem: fridgeItem)
     }
     

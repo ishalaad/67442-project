@@ -46,6 +46,7 @@ class GroceryAddViewController: UIViewController, UINavigationControllerDelegate
   
   @IBAction func submit() {
     let grocItem = GrocItem()
+    //gets user responses from text field
     grocItem.name = nameField.text!
     grocItem.quantity = Int(quantityField.text!)
     if grocItem.name.count > 0 {

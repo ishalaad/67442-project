@@ -120,6 +120,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A9067A2821BC784F002C573F /* MyFridge */ = {
+			isa = PBXGroup;
+			children = (
+				A9FBF00F218A6CF4004D6DF9 /* MyFridgeViewController.swift */,
+				56713840218FC5920035AF6C /* FridgeItem.swift */,
+				56713842218FC99F0035AF6C /* MyFridgeTableViewCell.swift */,
+				56713843218FC99F0035AF6C /* MyFridgeTableViewCell.xib */,
+			);
+			path = MyFridge;
+			sourceTree = "<group>";
+		};
+		A9067A2921BC7868002C573F /* GroceryList */ = {
+			isa = PBXGroup;
+			children = (
+				A9FBF043218A77A3004D6DF9 /* GroceryListViewController.swift */,
+				A9FBF045218A77B2004D6DF9 /* GroceryAddViewController.swift */,
+				A9FBF08B218A9F7B004D6DF9 /* GrocItem.swift */,
+				A9FBF091218AAC66004D6DF9 /* GroceryTableViewCell.swift */,
+				A9FBF092218AAC66004D6DF9 /* GroceryTableViewCell.xib */,
+			);
+			path = GroceryList;
+			sourceTree = "<group>";
+		};
+		A9067A2A21BC7870002C573F /* AddToFridge */ = {
+			isa = PBXGroup;
+			children = (
+				A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */,
+				56FF545821AFBB7100530B2B /* CollectionViewCell.swift */,
+				A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */,
+				56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */,
+			);
+			path = AddToFridge;
+			sourceTree = "<group>";
+		};
 		A9FBEFFF218A6CF4004D6DF9 = {
 			isa = PBXGroup;
 			children = (
@@ -149,24 +183,14 @@
 				A954592721938E4100774DCB /* foodExpiration.txt */,
 				A9FBF08F218AA9C6004D6DF9 /* DataManager.swift */,
 				A9FBF00B218A6CF4004D6DF9 /* AppDelegate.swift */,
-				A9FBF00D218A6CF4004D6DF9 /* ScanViewController.swift */,
-				A9FBF00F218A6CF4004D6DF9 /* MyFridgeViewController.swift */,
-				56FF545821AFBB7100530B2B /* CollectionViewCell.swift */,
+				A9067A2821BC784F002C573F /* MyFridge */,
+				A9067A2921BC7868002C573F /* GroceryList */,
+				A9067A2A21BC7870002C573F /* AddToFridge */,
 				A9FBF011218A6CF4004D6DF9 /* Main.storyboard */,
-				A95459292193FE6F00774DCB /* ConfirmScanViewController.swift */,
-				56713840218FC5920035AF6C /* FridgeItem.swift */,
-				56D439E3218FC19100074B5C /* ManuallyAddViewController.swift */,
-				A9FBF091218AAC66004D6DF9 /* GroceryTableViewCell.swift */,
-				A9FBF092218AAC66004D6DF9 /* GroceryTableViewCell.xib */,
 				A9FBF014218A6CF6004D6DF9 /* Assets.xcassets */,
 				A9FBF016218A6CF6004D6DF9 /* LaunchScreen.storyboard */,
 				A9FBF019218A6CF6004D6DF9 /* Info.plist */,
-				A9FBF043218A77A3004D6DF9 /* GroceryListViewController.swift */,
-				56713842218FC99F0035AF6C /* MyFridgeTableViewCell.swift */,
-				56713843218FC99F0035AF6C /* MyFridgeTableViewCell.xib */,
-				A9FBF045218A77B2004D6DF9 /* GroceryAddViewController.swift */,
 				A9FBF084218A7A88004D6DF9 /* FridgeApp.xcdatamodeld */,
-				A9FBF08B218A9F7B004D6DF9 /* GrocItem.swift */,
 			);
 			path = FridgeApp;
 			sourceTree = "<group>";

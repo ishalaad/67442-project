@@ -42,7 +42,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			cell?.layer.borderColor = UIColor.black.cgColor
 			cell?.layer.borderWidth = 3
 		}
-	
+        //add selected items
 		selectedItems.append(commonItemsStrings[indexPath.item])
 		
 	}
@@ -53,6 +53,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			cell.layer.borderColor = UIColor.white.cgColor
 		}
 		
+        //remove unselected comments from selected items list
 		selectedItems.index(of: commonItemsStrings[indexPath.item]).map { selectedItems.remove(at: $0) }
 		
 	}
@@ -60,7 +61,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 	
 	@IBAction func loadAddedCommonItemsList() {
 		print (selectedItems)
-
+        // dictionary of 9 quick add items
 		var dictExpirationDates = ["Apples": [12, 22], "Milk": [1, 6], "Bananas": [6, 7], "Yogurt": [4, 4], "Strawberries": [20, 6], "Grapes": [1, 5], "Lettuce": [1, 4], "Oranges": [10, 9], "Eggs": [12, 10]]
 		for item in selectedItems {
 			let fridgeItem = FridgeItem()
@@ -103,6 +104,7 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   
   weak var delegate: ManuallyAddViewControllerDelegate?
   
+  //Google Cloud Vision API information
   var googleAPIKey = "AIzaSyAWNssKrhgP9TgMwRUPvnK3g-vL8dKZBpU"
   var googleURL: URL {
     return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
@@ -233,7 +235,7 @@ extension ScanViewController {
       spinner.startAnimating()
       labelResults.isHidden = true
       
-      //             Base64 encode the image and create the request
+      // Base64 encode the image and create the request
       let binaryImageData = base64EncodeImage(pickedImage)
       createRequest(with: binaryImageData)
     }

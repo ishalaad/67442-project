@@ -52,6 +52,7 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
   }
 	
 	@IBAction func submit() {
+        // create fridge item
 		let fridgeItem = FridgeItem()
 		fridgeItem.name = nameField.text!
 		fridgeItem.quantity = Int(quantityField.text!)
