@@ -15,18 +15,15 @@ class MyFridgeTableViewCell: UITableViewCell {
     @IBOutlet weak var quantity: UILabel!
     @IBOutlet weak var foodIcon: UIImageView!
     @IBOutlet weak var daysLeft: UILabel!
-//	@IBOutlet weak var q: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

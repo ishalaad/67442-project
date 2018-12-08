@@ -17,22 +17,6 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   @IBOutlet weak var grocListTop: UIImageView!
 
     override func viewDidLoad() {
-//      super.viewDidLoad()
-//      let appDelegate1 = UIApplication.shared.delegate as! AppDelegate
-//      let context1 = appDelegate1.persistentContainer.viewContext
-//      let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryListItem")
-//      request1.returnsObjectsAsFaults = false
-//      do {
-//        let result = try context1.fetch(request1)
-//        for data in result as! [NSManagedObject] {
-//          context1.delete(data)
-//          try context1.save()
-//        }
-//      } catch {
-//        print("Failed")
-//      }
-//      grocItems.remove(at: indexPath.row)
-//      tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
       tableView.dataSource = self
       tableView.delegate = self
 
@@ -54,15 +38,6 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       } catch {
         print("Failed")
       }
-//      grocListTop.image = UIImage(named: "notepadTop")
-//      let imageView = UIImageView(image: UIImage(named: "notepadLines"))
-//      var frame = imageView.frame
-//      frame.size.height = tableView.frame.height
-//      frame.size.width = tableView.frame.width
-//      /* other frame changes ... */
-//      imageView.frame = frame
-//      tableView.backgroundView = UIView()
-//      tableView.backgroundView!.addSubview(imageView)
 			
     }
   
@@ -75,7 +50,6 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,29 +76,6 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-
-//    if editingStyle == .delete {
-//      let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//      let context = appDelegate.persistentContainer.viewContext
-//      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GroceryListItem")
-//      request.returnsObjectsAsFaults = false
-//      do {
-//        let result = try context.fetch(request)
-//        for data in result as! [NSManagedObject] {
-//          // if the contact we are deleting is the same as this one in CoreData
-//          if grocItems[indexPath.row].name == (data.value(forKey: "name") as! String) &&
-//            grocItems[indexPath.row].quantity == (data.value(forKey: "quantity") as! Int){
-//            print("----------------DELETED FROM CONTEXT----------------")
-//            context.delete(data)
-//            try context.save()
-//          }
-//        }
-//      } catch {
-//        print("Failed")
-//      }
-//      grocItems.remove(at: indexPath.row)
-//      tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
-//    }
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -161,7 +112,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
       do {
         let result = try context.fetch(request)
         for data in result as! [NSManagedObject] {
-          // if the contact we are deleting is the same as this one in CoreData
+          // if the grocItem we are deleting is the same as this one in CoreData
           if self.grocItems[indexPath.row].name == (data.value(forKey: "name") as! String) &&
             self.grocItems[indexPath.row].quantity == (data.value(forKey: "quantity") as! Int){
             print("----------------PURCHASED \(self.grocItems[indexPath.row].name)----------------")
@@ -182,7 +133,6 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    self.performSegue(withIdentifier: "showDetail", sender: indexPath)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -208,16 +158,5 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     
     dismiss(animated: true, completion: nil)
   }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -20,21 +20,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//          let appDelegate1 = UIApplication.shared.delegate as! AppDelegate
-//          let context1 = appDelegate1.persistentContainer.viewContext
-//          let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeListItem")
-//          request1.returnsObjectsAsFaults = false
-//          do {
-//            let result = try context1.fetch(request1)
-//            for data in result as! [NSManagedObject] {
-//              context1.delete(data)
-//              try context1.save()
-//            }
-//          } catch {
-//            print("Failed")
-//          }
-//          fridgeItems.remove(at: indexPath.row)
-//          tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		tableView.dataSource = self
 		tableView.delegate = self
         fridgeTop.image = UIImage(named: "fridgeTop3")
@@ -100,7 +85,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,8 +115,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
         let foodIconArray = ["Apples", "Bananas", "Milk", "Oranges", "Grapes","Lettuce","Strawberries","Yogurt", "Eggs", "Kiwi", "Kiwifruit","Watermelon"]
         if foodIconArray.contains(fridgeItem.name){
           cell.foodIcon.image = UIImage(named: "\(fridgeItem.name)Icon")
-        } else {
-          cell.foodIcon.image = UIImage(named: "notFoundIcon")
         }
         cell.backgroundColor = UIColor.clear
 		return cell
@@ -156,7 +138,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			do {
 				let result = try context.fetch(request)
 				for data in result as! [NSManagedObject] {
-					// if the contact we are deleting is the same as this one in CoreData
+					// if the fridgeItem we are deleting is the same as this one in CoreData
 					if self.fridgeItems[indexPath.row].name == (data.value(forKey: "name") as! String) &&
 						self.fridgeItems[indexPath.row].quantity == (data.value(forKey: "quantity") as! Int) &&
 						self.fridgeItems[indexPath.row].expDate == (data.value(forKey: "expDate") as! Int) {

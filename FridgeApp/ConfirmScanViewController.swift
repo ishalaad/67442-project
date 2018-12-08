@@ -46,10 +46,6 @@ class ConfirmScanViewController: UIViewController {
       
       saveFridgeItem(fridgeItem: fridgeItem)
     }
-    //navigationController?.popViewController(animated: true)
-    //_ = navigationController?.popViewController(animated: true)
-    //    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyFridgeViewController") as? MyFridgeViewController
-    //    self.navigationController?.pushViewController(vc!, animated: true)
     
   }
   
@@ -64,7 +60,6 @@ class ConfirmScanViewController: UIViewController {
     newItem.setValue(fridgeItem.name, forKey: "name")
     newItem.setValue(fridgeItem.quantity, forKey: "quantity")
     newItem.setValue(fridgeItem.expDate, forKey: "expDate")
-    // Safely unwrap the picture
     do {
       try context.save()
       
@@ -73,16 +68,4 @@ class ConfirmScanViewController: UIViewController {
       print("Failed saving")
     }
   }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

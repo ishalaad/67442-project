@@ -28,7 +28,6 @@ class GroceryAddViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +58,12 @@ class GroceryAddViewController: UIViewController, UINavigationControllerDelegate
     // Connect to the context for the container stack
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = appDelegate.persistentContainer.viewContext
-    // Specifically select the People entity to save this object to
+    // Specifically select the GroceryListItem entity to save this object to
     let entity = NSEntityDescription.entity(forEntityName: "GroceryListItem", in: context)
     let newItem = NSManagedObject(entity: entity!, insertInto: context)
     // Set values one at a time and save
     newItem.setValue(grocItem.name, forKey: "name")
     newItem.setValue(grocItem.quantity, forKey: "quantity")
-    // Safely unwrap the picture
     do {
       try context.save()
       print("SAVED")
@@ -73,14 +71,5 @@ class GroceryAddViewController: UIViewController, UINavigationControllerDelegate
       print("Failed saving")
     }
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

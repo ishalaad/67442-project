@@ -20,10 +20,6 @@ class GrocItem: NSObject, NSCoding {
   }
   
   // MARK: - Encoding
-  
-  // marking 'required' in case of subclassing, this init will be
-  // required of the subclass (not really an issue here b/c not
-  // subclassing; more for pedagogical purposes at this point)
   required init(coder aDecoder: NSCoder) {
     self.name = aDecoder.decodeObject(forKey: "Name") as! String
     self.quantity = aDecoder.decodeObject(forKey: "Quantity") as? Int
@@ -34,11 +30,5 @@ class GrocItem: NSObject, NSCoding {
     aCoder.encode(name, forKey: "Name")
     aCoder.encode(quantity, forKey: "Quantity")
   }
-  
-  //  func encodeWithCoder(aCoder: NSCoder) {
-  //    aCoder.encode(name, forKey: "Name")
-  //    aCoder.encode(email, forKey: "Email")
-  //    aCoder.encode(phone, forKey: "Phone")
-  //  }
   
 }
