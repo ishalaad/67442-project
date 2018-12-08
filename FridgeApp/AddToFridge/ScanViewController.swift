@@ -12,12 +12,6 @@ import SwiftyJSON
 
 class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 	
-	//@IBOutlet weak var tableview: UITableView!
-	
-	//addingCommonItems
-	
-	//@IBOutlet weak var tableView: UITableView!
-	
 	let commonItemsStrings:[String] = ["Apples", "Milk", "Bananas", "Yogurt", "Strawberries", "Grapes", "Lettuce", "Oranges", "Eggs"]
 	var selectedItems:[String] = []
 	
@@ -48,10 +42,9 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			cell?.layer.borderColor = UIColor.black.cgColor
 			cell?.layer.borderWidth = 3
 		}
-	
+        //add selected items
 		selectedItems.append(commonItemsStrings[indexPath.item])
 		
-		//loadAddedCommonItemsList()
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -60,24 +53,16 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			cell.layer.borderColor = UIColor.white.cgColor
 		}
 		
+        //remove unselected comments from selected items list
 		selectedItems.index(of: commonItemsStrings[indexPath.item]).map { selectedItems.remove(at: $0) }
-		//selectedItems.append(commonItemsStrings[indexPath.item])
 		
 	}
-	
-//	@IBAction func load() {
-//		if let nav = self.navigationController {
-//			nav.popViewController(animated: true)
-//		} else {
-//			self.dismiss(animated: true, completion: nil)
-//		}
-//	}
 	
 	
 	@IBAction func loadAddedCommonItemsList() {
 		print (selectedItems)
-
-		var dictExpirationDates = ["Apples": [12, 22], "Milk": [1, 6], "Bananas": [6, 7], "Yogurt": [4, 4], "Strawberries": [20, 3], "Grapes": [1, 5], "Lettuce": [1, 4], "Oranges": [10, 9], "Eggs": [12, 10]]
+        // dictionary of 9 quick add items
+		var dictExpirationDates = ["Apples": [12, 22], "Milk": [1, 6], "Bananas": [6, 7], "Yogurt": [4, 4], "Strawberries": [20, 6], "Grapes": [1, 5], "Lettuce": [1, 4], "Oranges": [10, 9], "Eggs": [12, 10]]
 		for item in selectedItems {
 			let fridgeItem = FridgeItem()
 			fridgeItem.name = item
@@ -85,8 +70,6 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			fridgeItem.expDate = dictExpirationDates[item]?[1]
 			if fridgeItem.name.count > 0 {
 				saveFridgeItem(fridgeItem: fridgeItem)
-				//_ = navigationController?.popViewController(animated: true)
-//				delegate?.ManuallyAddViewController (controller: self, didFinishAddingFridgeItem: fridgeItem)
 			}
 		}
 	}
@@ -102,7 +85,6 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 		newItem.setValue(fridgeItem.name, forKey: "name")
 		newItem.setValue(fridgeItem.quantity, forKey: "quantity")
 		newItem.setValue(fridgeItem.expDate, forKey: "expDate")
-		// Safely unwrap the picture
 		do {
 			try context.save()
 			print("SAVED")
@@ -110,27 +92,6 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 			print("Failed saving")
 		}
 	}
-	
-	//tableview for add common items
-	
-//	func numberOfSections(in tableView: UITableView) -> Int {
-//		return 1
-//	}
-//	
-//	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//		return selectedItems.count
-//	}
-//
-//	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as UITableViewCell
-//
-//		//cell.textLabel?.text = selectedItems[indexPath.row]
-//		cell.name?.text = selectedItems[indexPath.row]
-//
-//		return cell
-//	}
-	
-	
 	//scan in
   
   let imagePicker = UIImagePickerController()
@@ -138,12 +99,12 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
   var itemArray = [String.SubSequence]()
   var fridgeItems = [FridgeItem]()
   
-//  @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var spinner: UIActivityIndicatorView!
   @IBOutlet weak var labelResults: UITextView!
   
   weak var delegate: ManuallyAddViewControllerDelegate?
   
+  //Google Cloud Vision API information
   var googleAPIKey = "AIzaSyAWNssKrhgP9TgMwRUPvnK3g-vL8dKZBpU"
   var googleURL: URL {
     return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(googleAPIKey)")!
@@ -156,38 +117,11 @@ class ScanViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     present(imagePicker, animated: true, completion: nil)
   }
   
-//  @IBAction func takePhoto(){
-//    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-//      let imagePicker = UIImagePickerController()
-//      imagePicker.delegate = self
-//      imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-//      imagePicker.allowsEditing = false
-//      self.present(imagePicker, animated: true, completion: nil)
-//    }
-//  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-//		var apple = FridgeItem()
-//		apple.name = "apple"
-//		apple.quantity = 0
-//		apple.expDate = 3
-//
-//		var milk = FridgeItem()
-//		apple.name = "milk"
-//		apple.quantity = 0
-//		apple.expDate = 3
-    // Do any additional setup after loading the view, typically from a nib.
-    //      let image = UIImage(named: "apple.jpg")
-    //      let binaryImageData = base64EncodeImage(image!)
-    //      createRequest(with: binaryImageData)
     imagePicker.delegate = self
     labelResults.isHidden = true
     spinner.hidesWhenStopped = true
-		
-		//added
-		//tableView.dataSource = self
-		//tableView.delegate = self
   }
   
   override func didReceiveMemoryWarning() {
@@ -222,7 +156,6 @@ extension ScanViewController {
       let errorObj: JSON = json["error"]
       
       self.spinner.stopAnimating()
-//      self.imageView.isHidden = true
       self.labelResults.isHidden = false
       
       // Check for errors
@@ -230,7 +163,6 @@ extension ScanViewController {
         self.labelResults.text = "Error code \(errorObj["code"]): \(errorObj["message"])"
       } else {
         // Parse the response
-        //                print(json)
         let responses: JSON = json["responses"][0]
         
         // Get label annotations
@@ -238,7 +170,7 @@ extension ScanViewController {
         let numLabels: Int = labelAnnotations.count
         var labels: Array<String> = []
         if numLabels > 0 {
-          var labelResultsText:String = ""//"Labels found: "
+          var labelResultsText:String = ""
           for index in 0..<numLabels {
             let label = labelAnnotations[index]["description"].stringValue
             labels.append(label)
@@ -269,9 +201,7 @@ extension ScanViewController {
   
   func identifyItem (APIresults: String) {
     //search words in txt file
-//    let userPath = "/Users/sbauerthp/Documents/IOSApp/Fridge App/67442-project/FridgeApp" //ADD PATH TO SWIFT FOLDER HERE
     let userPath = Bundle.main.path(forResource: "foodExpiration", ofType: "txt")
-//    let file = "\(userPath)/foodExpiration.txt"
     do {
       // Get the contents of the file
       let contents = try NSString(contentsOfFile: userPath!, encoding: String.Encoding.utf8.rawValue)
@@ -302,17 +232,11 @@ extension ScanViewController {
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//      imageView.contentMode = .scaleAspectFit
-//      imageView.isHidden = true // You could optionally display the image here by setting imageView.image = pickedImage
-      //imageView.image = pickedImage
       spinner.startAnimating()
       labelResults.isHidden = true
       
-      //             Base64 encode the image and create the request
+      // Base64 encode the image and create the request
       let binaryImageData = base64EncodeImage(pickedImage)
-      // hard coding image in
-      //          let image = UIImage(named: "avacado.jpg")
-      //          let binaryImageData = base64EncodeImage(image!)
       createRequest(with: binaryImageData)
     }
     

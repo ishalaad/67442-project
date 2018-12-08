@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationDidBecomeActive(_ application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //proof of concept in app alert
     let alert = UIAlertController(title: "Expiration Notice!", message: "Your apples will expire in 2 days", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
     self.window?.rootViewController?.present(alert, animated: true)

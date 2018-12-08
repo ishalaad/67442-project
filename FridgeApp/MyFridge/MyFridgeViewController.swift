@@ -20,21 +20,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//          let appDelegate1 = UIApplication.shared.delegate as! AppDelegate
-//          let context1 = appDelegate1.persistentContainer.viewContext
-//          let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: "FridgeListItem")
-//          request1.returnsObjectsAsFaults = false
-//          do {
-//            let result = try context1.fetch(request1)
-//            for data in result as! [NSManagedObject] {
-//              context1.delete(data)
-//              try context1.save()
-//            }
-//          } catch {
-//            print("Failed")
-//          }
-//          fridgeItems.remove(at: indexPath.row)
-//          tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		tableView.dataSource = self
 		tableView.delegate = self
         fridgeTop.image = UIImage(named: "fridgeTop3")
@@ -56,6 +41,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 		} catch {
 			print("Failed")
 		}
+      //display the shelves in the background of my fridge
       let imageView = UIImageView(image: UIImage(named: "shelves3"))
       var frame = imageView.frame
       frame.size.height = tableView.frame.height
@@ -79,7 +65,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func ManuallyAddViewController(controller: ManuallyAddViewController, didFinishAddingFridgeItem fridgeItem: FridgeItem) {
 		let newRowIndex = fridgeItems.count
-		
+		//add fridge item
 		fridgeItems.append(fridgeItem)
 		
 		let indexPath = NSIndexPath(row: newRowIndex, section: 0)
@@ -92,6 +78,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	func loadMyFridgeList(data: NSManagedObject){
 		let newFridgeItem = FridgeItem()
+        //get inputed values from the text boxes for item information
 		newFridgeItem.name = data.value(forKey: "name") as! String
 		newFridgeItem.quantity = (data.value(forKey: "quantity") as! Int)
 		newFridgeItem.expDate = (data.value(forKey: "expDate") as! Int)
@@ -100,7 +87,6 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,6 +100,8 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "fridgeCell", for: indexPath as IndexPath) as! MyFridgeTableViewCell
 		let fridgeItem = fridgeItems[indexPath.row]
+      
+        //to display the items that are going bad soon in red
         if (fridgeItem.expDate! < 4) {
           cell.name?.textColor = UIColor.red
           cell.expDate?.textColor = UIColor.red
@@ -131,9 +119,8 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
         let foodIconArray = ["Apples", "Bananas", "Milk", "Oranges", "Grapes","Lettuce","Strawberries","Yogurt", "Eggs", "Kiwi", "Kiwifruit","Watermelon"]
         if foodIconArray.contains(fridgeItem.name){
           cell.foodIcon.image = UIImage(named: "\(fridgeItem.name)Icon")
-        } else {
-          cell.foodIcon.image = UIImage(named: "notFoundIcon")
         }
+        //if added item has not icon, input a clear background
         cell.backgroundColor = UIColor.clear
 		return cell
 	}
@@ -156,7 +143,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			do {
 				let result = try context.fetch(request)
 				for data in result as! [NSManagedObject] {
-					// if the contact we are deleting is the same as this one in CoreData
+					// if the fridgeItem we are deleting is the same as this one in CoreData
 					if self.fridgeItems[indexPath.row].name == (data.value(forKey: "name") as! String) &&
 						self.fridgeItems[indexPath.row].quantity == (data.value(forKey: "quantity") as! Int) &&
 						self.fridgeItems[indexPath.row].expDate == (data.value(forKey: "expDate") as! Int) {
@@ -168,6 +155,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 			} catch {
 				print("Failed")
 			}
+            //if user swipes to delete item in fridge
 			self.fridgeItems.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
 		}
@@ -176,6 +164,7 @@ class MyFridgeViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      //makes row unselectable/highlighted because nothing happens when you tap cell
       if let selectedRow = tableView.indexPathForSelectedRow {
         tableView.deselectRow(at: selectedRow, animated: true)
       }

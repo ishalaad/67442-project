@@ -30,7 +30,6 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Do any additional setup after loading the view.
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,12 +39,10 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 	
   @IBAction func cancel() {
     print ("cancel")
-    //    delegate?.ManuallyAddViewControllerDidCancel(controller: self)
     if let nav = self.navigationController {
       nav.popViewController(animated: true)
     } else {
@@ -55,19 +52,15 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
   }
 	
 	@IBAction func submit() {
+        // create fridge item
 		let fridgeItem = FridgeItem()
 		fridgeItem.name = nameField.text!
 		fridgeItem.quantity = Int(quantityField.text!)
 		fridgeItem.expDate = Int(expDateField.text!)
 		if fridgeItem.name.count > 0 {
 			saveFridgeItem(fridgeItem: fridgeItem)
-			//_ = navigationController?.popViewController(animated: true)
 			delegate?.ManuallyAddViewController(controller: self, didFinishAddingFridgeItem: fridgeItem)
 		}
-		//navigationController?.popViewController(animated: true)
-		//_ = navigationController?.popViewController(animated: true)
-//		let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyFridgeViewController") as? MyFridgeViewController
-//		self.navigationController?.pushViewController(vc!, animated: true)
 		
 	}
 	
@@ -75,14 +68,13 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 		// Connect to the context for the container stack
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		let context = appDelegate.persistentContainer.viewContext
-		// Specifically select the People entity to save this object to
+		// Specifically select the fridgeListItem entity to save this object to
 		let entity = NSEntityDescription.entity(forEntityName: "FridgeListItem", in: context)
 		let newItem = NSManagedObject(entity: entity!, insertInto: context)
 		// Set values one at a time and save
 		newItem.setValue(fridgeItem.name, forKey: "name")
 		newItem.setValue(fridgeItem.quantity, forKey: "quantity")
 		newItem.setValue(fridgeItem.expDate, forKey: "expDate")
-		// Safely unwrap the picture
 		do {
 			try context.save()
 			print("SAVED")
@@ -95,17 +87,7 @@ class ManuallyAddViewController: UIViewController, UINavigationControllerDelegat
 		if segue.identifier == "myFridge" {
 			let navigationController = segue.destination as! UINavigationController
 			let controller = navigationController.topViewController as! MyFridgeViewController
-			//controller.delegate = self
 		}
 	}
-	/*
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	// Get the new view controller using segue.destinationViewController.
-	// Pass the selected object to the new view controller.
-	}
-	*/
 	
 }

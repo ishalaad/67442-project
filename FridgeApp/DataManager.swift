@@ -39,8 +39,6 @@ class DataManager {
   
   init() {
     loadGrocItems()
-    // print("Documents folder is \(documentsDirectory())\n")
-    // print("Data file path is \(dataFilePath())")
   }
   
   
